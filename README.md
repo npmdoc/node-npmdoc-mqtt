@@ -1,11 +1,13 @@
-# api documentation for  [mqtt (v2.5.1)](https://github.com/mqttjs/MQTT.js#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mqtt.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mqtt) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mqtt.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mqtt)
+# api documentation for  [mqtt (v2.6.0)](https://github.com/mqttjs/MQTT.js#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mqtt.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mqtt) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mqtt.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mqtt)
 #### A library for the MQTT protocol
 
 [![NPM](https://nodei.co/npm/mqtt.png?downloads=true)](https://www.npmjs.com/package/mqtt)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-mqtt/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-mqtt_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-mqtt/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-mqtt/build/screenCapture.buildNpmdoc.browser.%2Fhome%2Ftravis%2Fbuild%2Fnpmdoc%2Fnode-npmdoc-mqtt%2Ftmp%2Fbuild%2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-mqtt/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-mqtt/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-mqtt/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-mqtt/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
@@ -51,13 +53,13 @@
         "readable-stream": "^2.2.3",
         "reinterval": "^1.1.0",
         "split2": "^2.1.1",
-        "websocket-stream": "^3.3.3",
+        "websocket-stream": "^4.0.0",
         "xtend": "^4.0.1"
     },
     "description": "A library for the MQTT protocol",
     "devDependencies": {
         "browserify": "^14.1.0",
-        "codecov": "^1.0.1",
+        "codecov": "^2.0.0",
         "istanbul": "^0.4.5",
         "mkdirp": "^0.5.1",
         "mocha": "^3.2.0",
@@ -68,21 +70,21 @@
         "should": "*",
         "sinon": "~1.17.7",
         "snazzy": "^6.0.0",
-        "standard": "^8.6.0",
+        "standard": "^10.0.0",
         "through2": "^2.0.3",
         "tslint": "^4.5.1",
         "tslint-config-standard": "^4.0.0",
         "typescript": "^2.2.1",
         "uglify": "^0.1.5",
         "uglify-js": "^2.7.5",
-        "ws": "^1.0.0",
+        "ws": "^2.0.0",
         "zuul": "^3.11.1",
         "zuul-ngrok": "^4.0.0"
     },
     "directories": {},
     "dist": {
-        "shasum": "d3b0d901290f191e853aa12dc148b6648c9050e4",
-        "tarball": "https://registry.npmjs.org/mqtt/-/mqtt-2.5.1.tgz"
+        "shasum": "381fcf76c2110f0b5d32967862fe6347a255f36d",
+        "tarball": "https://registry.npmjs.org/mqtt/-/mqtt-2.6.0.tgz"
     },
     "engines": {
         "node": ">=4.0.0"
@@ -98,7 +100,7 @@
         "types",
         "mqtt.js"
     ],
-    "gitHead": "d7e5b170df9e3070beb15d28f12034b868eb0cec",
+    "gitHead": "f55a8e90ae2a03650597f4352652de1266fd24ec",
     "homepage": "https://github.com/mqttjs/MQTT.js#readme",
     "keywords": [
         "mqtt",
@@ -144,7 +146,7 @@
         ]
     },
     "types": "types/index.d.ts",
-    "version": "2.5.1"
+    "version": "2.6.0"
 }
 ```
 

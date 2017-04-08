@@ -1,0 +1,2515 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mqttjs/MQTT.js#readme">mqtt (v2.6.0)</a>
+</h1>
+<h4>A library for the MQTT protocol</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mqtt">module mqtt</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Client">
+            function <span class="apidocSignatureSpan">mqtt.</span>Client
+            <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient">
+            function <span class="apidocSignatureSpan">mqtt.</span>MqttClient
+            <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Store">
+            function <span class="apidocSignatureSpan">mqtt.</span>Store
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.connect">
+            function <span class="apidocSignatureSpan">mqtt.</span>connect
+            <span class="apidocSignatureSpan">(brokerUrl, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mqtt.</span>MqttClient.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mqtt.</span>Store.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mqtt.</span>validations</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mqtt.MqttClient">module mqtt.MqttClient</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.MqttClient">
+            function <span class="apidocSignatureSpan">mqtt.</span>MqttClient
+            <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.super_">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mqtt.MqttClient.prototype">module mqtt.MqttClient.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._checkDisconnecting">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_checkDisconnecting
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._checkPing">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_checkPing
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._cleanUp">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_cleanUp
+            <span class="apidocSignatureSpan">(forced, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._clearReconnect">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_clearReconnect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._handleAck">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handleAck
+            <span class="apidocSignatureSpan">(packet)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._handleConnack">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handleConnack
+            <span class="apidocSignatureSpan">(packet)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._handlePacket">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePacket
+            <span class="apidocSignatureSpan">(packet, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._handlePingresp">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePingresp
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._handlePublish">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePublish
+            <span class="apidocSignatureSpan">(packet, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._handlePubrel">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePubrel
+            <span class="apidocSignatureSpan">(packet, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._nextId">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_nextId
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._reconnect">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_reconnect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._sendPacket">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_sendPacket
+            <span class="apidocSignatureSpan">(packet, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._setupPingTimer">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_setupPingTimer
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._setupReconnect">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_setupReconnect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._setupStream">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_setupStream
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype._shiftPingInterval">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_shiftPingInterval
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype.end">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>end
+            <span class="apidocSignatureSpan">(force, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype.getLastMessageId">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>getLastMessageId
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype.handleMessage">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>handleMessage
+            <span class="apidocSignatureSpan">(packet, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype.publish">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>publish
+            <span class="apidocSignatureSpan">(topic, message, opts, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype.subscribe">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>subscribe
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.MqttClient.prototype.unsubscribe">
+            function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>unsubscribe
+            <span class="apidocSignatureSpan">(topic, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mqtt.Store">module mqtt.Store</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Store.Store">
+            function <span class="apidocSignatureSpan">mqtt.</span>Store
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mqtt.Store.prototype">module mqtt.Store.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Store.prototype.close">
+            function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>close
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Store.prototype.createStream">
+            function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>createStream
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Store.prototype.del">
+            function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>del
+            <span class="apidocSignatureSpan">(packet, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Store.prototype.get">
+            function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>get
+            <span class="apidocSignatureSpan">(packet, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.Store.prototype.put">
+            function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>put
+            <span class="apidocSignatureSpan">(packet, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mqtt.connect">module mqtt.connect</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.connect.connect">
+            function <span class="apidocSignatureSpan">mqtt.</span>connect
+            <span class="apidocSignatureSpan">(brokerUrl, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.connect.MqttClient">
+            function <span class="apidocSignatureSpan">mqtt.connect.</span>MqttClient
+            <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mqtt.validations">module mqtt.validations</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mqtt.validations.validateTopics">
+            function <span class="apidocSignatureSpan">mqtt.validations.</span>validateTopics
+            <span class="apidocSignatureSpan">(topics)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mqtt" id="apidoc.module.mqtt">module mqtt</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Client" id="apidoc.element.mqtt.Client">
+        function <span class="apidocSignatureSpan">mqtt.</span>Client
+        <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function MqttClient(streamBuilder, options) {
+  var k
+  var that = this
+
+  if (!(this instanceof MqttClient)) {
+    return new MqttClient(streamBuilder, options)
+  }
+
+  this.options = options || {}
+
+  // Defaults
+  for (k in defaultConnectOptions) {
+    if (typeof this.options[k] === 'undefined') {
+      this.options[k] = defaultConnectOptions[k]
+    } else {
+      this.options[k] = options[k]
+    }
+  }
+
+  this.options.clientId = this.options.clientId || defaultId()
+
+  this.streamBuilder = streamBuilder
+
+  // Inflight message storages
+  this.outgoingStore = this.options.outgoingStore || new Store()
+  this.incomingStore = this.options.incomingStore || new Store()
+
+  // Should QoS zero messages be queued when the connection is broken?
+  this.queueQoSZero = this.options.queueQoSZero === undefined ? true : this.options.queueQoSZero
+
+  // map of subscribed topics to support reconnection
+  this._resubscribeTopics = {}
+
+  // Ping timer, setup in _setupPingTimer
+  this.pingTimer = null
+  // Is the client connected?
+  this.connected = false
+  // Are we disconnecting?
+  this.disconnecting = false
+  // Packet queue
+  this.queue = []
+  // connack timer
+  this.connackTimer = null
+  // Reconnect timer
+  this.reconnectTimer = null
+  // MessageIDs starting with 1
+  this.nextId = Math.floor(Math.random() * 65535)
+
+  // Inflight callbacks
+  this.outgoing = {}
+
+  // Mark connected on connect
+  this.on('connect', function () {
+    if (this.disconnected) {
+      return
+    }
+
+    this.connected = true
+    var outStore = null
+    outStore = this.outgoingStore.createStream()
+
+    // Control of stored messages
+    outStore.once('readable', function () {
+      function storeDeliver () {
+        var packet = outStore.read(1)
+        var cb
+
+        if (!packet) {
+          return
+        }
+
+        // Avoid unnecesary stream read operations when disconnected
+        if (!that.disconnecting &amp;&amp; !that.reconnectTimer &amp;&amp; that.options.reconnectPeriod &gt; 0) {
+          outStore.read(0)
+          cb = that.outgoing[packet.messageId]
+          that.outgoing[packet.messageId] = function (err, status) {
+            // Ensure that the original callback passed in to publish gets invoked
+            if (cb) {
+              cb(err, status)
+            }
+
+            storeDeliver()
+          }
+          that._sendPacket(packet)
+        } else if (outStore.destroy) {
+          outStore.destroy()
+        }
+      }
+      storeDeliver()
+    })
+    .on('error', this.emit.bind(this, 'error'))
+  })
+
+  // Mark disconnected on stream close
+  this.on('close', function () {
+    this.connected = false
+    clearTimeout(this.connackTimer)
+  })
+
+  // Setup ping timer
+  this.on('connect', this._setupPingTimer)
+
+  // Send queued packets
+  this.on('connect', function () {
+    var queue = this.queue
+
+    function deliver () {
+      var entry = queue.shift()
+      var packet = null
+
+      if (!entry) {
+        return
+      }
+
+      packet = entry.packet
+
+      that._sendPacket(
+        packet,
+        function (err) {
+          if (entry.cb) {
+            entry.cb(err)
+          }
+          deliver()
+        }
+      )
+    }
+
+    deliver()
+  })
+
+  // resubscribe
+  this.on('reconnect', function () {
+    if (this.options.clean &amp;&amp; Object.keys(this._resubscribeTopics).length &gt; 0) {
+      this.subscribe(this._resubscribeTopics)
+    }
+  })
+
+  // Clear ping timer
+  this.on('close', function () {
+    if (that.pingTimer !== null) {
+      that.pingTimer.clear()
+      that.pingTimer = null
+    }
+  })
+
+  // Setup reconnect timer on disconnect
+  this.on('close', this._setupReconnect)
+
+  events.EventEmitter.call(this)
+
+  this._setupStream()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+at every connect.
+
+For all MQTT-related options, see the [Client](#client)
+constructor.
+
+-------------------------------------------------------
+&lt;a name="client"&gt;&lt;/a&gt;
+### mqtt.<span class="apidocCodeKeywordSpan">Client</span>(streamBuilder, options)
+
+The `Client` class wraps a client connection to an
+MQTT broker over an arbitrary transport method (TCP, TLS,
+WebSocket, ecc).
+
+`Client` automatically handles the following:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient" id="apidoc.element.mqtt.MqttClient">
+        function <span class="apidocSignatureSpan">mqtt.</span>MqttClient
+        <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function MqttClient(streamBuilder, options) {
+  var k
+  var that = this
+
+  if (!(this instanceof MqttClient)) {
+    return new MqttClient(streamBuilder, options)
+  }
+
+  this.options = options || {}
+
+  // Defaults
+  for (k in defaultConnectOptions) {
+    if (typeof this.options[k] === 'undefined') {
+      this.options[k] = defaultConnectOptions[k]
+    } else {
+      this.options[k] = options[k]
+    }
+  }
+
+  this.options.clientId = this.options.clientId || defaultId()
+
+  this.streamBuilder = streamBuilder
+
+  // Inflight message storages
+  this.outgoingStore = this.options.outgoingStore || new Store()
+  this.incomingStore = this.options.incomingStore || new Store()
+
+  // Should QoS zero messages be queued when the connection is broken?
+  this.queueQoSZero = this.options.queueQoSZero === undefined ? true : this.options.queueQoSZero
+
+  // map of subscribed topics to support reconnection
+  this._resubscribeTopics = {}
+
+  // Ping timer, setup in _setupPingTimer
+  this.pingTimer = null
+  // Is the client connected?
+  this.connected = false
+  // Are we disconnecting?
+  this.disconnecting = false
+  // Packet queue
+  this.queue = []
+  // connack timer
+  this.connackTimer = null
+  // Reconnect timer
+  this.reconnectTimer = null
+  // MessageIDs starting with 1
+  this.nextId = Math.floor(Math.random() * 65535)
+
+  // Inflight callbacks
+  this.outgoing = {}
+
+  // Mark connected on connect
+  this.on('connect', function () {
+    if (this.disconnected) {
+      return
+    }
+
+    this.connected = true
+    var outStore = null
+    outStore = this.outgoingStore.createStream()
+
+    // Control of stored messages
+    outStore.once('readable', function () {
+      function storeDeliver () {
+        var packet = outStore.read(1)
+        var cb
+
+        if (!packet) {
+          return
+        }
+
+        // Avoid unnecesary stream read operations when disconnected
+        if (!that.disconnecting &amp;&amp; !that.reconnectTimer &amp;&amp; that.options.reconnectPeriod &gt; 0) {
+          outStore.read(0)
+          cb = that.outgoing[packet.messageId]
+          that.outgoing[packet.messageId] = function (err, status) {
+            // Ensure that the original callback passed in to publish gets invoked
+            if (cb) {
+              cb(err, status)
+            }
+
+            storeDeliver()
+          }
+          that._sendPacket(packet)
+        } else if (outStore.destroy) {
+          outStore.destroy()
+        }
+      }
+      storeDeliver()
+    })
+    .on('error', this.emit.bind(this, 'error'))
+  })
+
+  // Mark disconnected on stream close
+  this.on('close', function () {
+    this.connected = false
+    clearTimeout(this.connackTimer)
+  })
+
+  // Setup ping timer
+  this.on('connect', this._setupPingTimer)
+
+  // Send queued packets
+  this.on('connect', function () {
+    var queue = this.queue
+
+    function deliver () {
+      var entry = queue.shift()
+      var packet = null
+
+      if (!entry) {
+        return
+      }
+
+      packet = entry.packet
+
+      that._sendPacket(
+        packet,
+        function (err) {
+          if (entry.cb) {
+            entry.cb(err)
+          }
+          deliver()
+        }
+      )
+    }
+
+    deliver()
+  })
+
+  // resubscribe
+  this.on('reconnect', function () {
+    if (this.options.clean &amp;&amp; Object.keys(this._resubscribeTopics).length &gt; 0) {
+      this.subscribe(this._resubscribeTopics)
+    }
+  })
+
+  // Clear ping timer
+  this.on('close', function () {
+    if (that.pingTimer !== null) {
+      that.pingTimer.clear()
+      that.pingTimer = null
+    }
+  })
+
+  // Setup reconnect timer on disconnect
+  this.on('close', this._setupReconnect)
+
+  events.EventEmitter.call(this)
+
+  this._setupStream()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Store" id="apidoc.element.mqtt.Store">
+        function <span class="apidocSignatureSpan">mqtt.</span>Store
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Store() {
+  if (!(this instanceof Store)) {
+    return new Store()
+  }
+
+  this._inflights = {}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&lt;a name="reconnecting"&gt;&lt;/a&gt;
+### mqtt.Client#reconnecting
+
+Boolean : set to `true` if the client is trying to reconnect to the server. `false` otherwise.
+
+-------------------------------------------------------
+&lt;a name="store"&gt;&lt;/a&gt;
+### mqtt.<span class="apidocCodeKeywordSpan">Store</span>()
+
+In-memory implementation of the message store.
+
+Another implementaion is
+[mqtt-level-store](http://npm.im/mqtt-level-store) which uses
+[Level-browserify](http://npm.im/level-browserify) to store the inflight
+data, making it usable both in Node and the Browser.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.connect" id="apidoc.element.mqtt.connect">
+        function <span class="apidocSignatureSpan">mqtt.</span>connect
+        <span class="apidocSignatureSpan">(brokerUrl, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function connect(brokerUrl, opts) {
+  if ((typeof brokerUrl === 'object') &amp;&amp; !opts) {
+    opts = brokerUrl
+    brokerUrl = null
+  }
+
+  opts = opts || {}
+
+  if (brokerUrl) {
+    var parsed = url.parse(brokerUrl, true)
+    if (parsed.port != null) {
+      parsed.port = Number(parsed.port)
+    }
+
+    opts = xtend(parsed, opts)
+
+    if (opts.protocol === null) {
+      throw new Error('Missing protocol')
+    }
+    opts.protocol = opts.protocol.replace(/:$/, '')
+  }
+
+  // merge in the auth options if supplied
+  parseAuthOptions(opts)
+
+  // support clientId passed in the query string of the url
+  if (opts.query &amp;&amp; typeof opts.query.clientId === 'string') {
+    opts.clientId = opts.query.clientId
+  }
+
+  if (opts.cert &amp;&amp; opts.key) {
+    if (opts.protocol) {
+      if (['mqtts', 'wss'].indexOf(opts.protocol) === -1) {
+<span class="apidocCodeCommentSpan">        /*
+         * jshint and eslint
+         * complains that break from default cannot be reached after throw
+         * it is a foced exit from a control structure
+         * maybe add a check after switch to see if it went through default
+         * and then throw the error
+        */
+</span>        /* jshint -W027 */
+        /* eslint no-unreachable:1 */
+        switch (opts.protocol) {
+          case 'mqtt':
+            opts.protocol = 'mqtts'
+            break
+          case 'ws':
+            opts.protocol = 'wss'
+            break
+          default:
+            throw new Error('Unknown protocol for secure connection: "' + opts.protocol + '"!')
+            break
+        }
+        /* eslint no-unreachable:0 */
+        /* jshint +W027 */
+      }
+    } else {
+      // don't know what protocol he want to use, mqtts or wss
+      throw new Error('Missing secure protocol key')
+    }
+  }
+
+  if (!protocols[opts.protocol]) {
+    var isSecure = ['mqtts', 'wss'].indexOf(opts.protocol) !== -1
+    opts.protocol = [
+      'mqtt',
+      'mqtts',
+      'ws',
+      'wss'
+    ].filter(function (key, index) {
+      if (isSecure &amp;&amp; index % 2 === 0) {
+        // Skip insecure protocols when requesting a secure one.
+        return false
+      }
+      return (typeof protocols[key] === 'function')
+    })[0]
+  }
+
+  if (opts.clean === false &amp;&amp; !opts.clientId) {
+    throw new Error('Missing clientId for unclean clients')
+  }
+
+  function wrapper (client) {
+    if (opts.servers) {
+      if (!client._reconnectCount || client._reconnectCount === opts.servers.length) {
+        client._reconnectCount = 0
+      }
+
+      opts.host = opts.servers[client._reconnectCount].host
+      opts.port = opts.servers[client._reconnectCount].port
+      opts.hostname = opts.host
+
+      client._reconnectCount++
+    }
+
+    return protocols[opts.protocol](client, opts)
+  }
+
+  return new MqttClient(wrapper, opts)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&lt;a name="example"&gt;&lt;/a&gt;
+## Example
+
+For the sake of simplicity, let's put the subscriber and the publisher in the same file:
+
+```js
+var mqtt = require('mqtt')
+var client  = mqtt.<span class="apidocCodeKeywordSpan">connect</span>('mqtt://test.mosquitto.org')
+
+client.on('connect', function () {
+  client.subscribe('presence')
+  client.publish('presence', 'Hello mqtt')
+})
+
+client.on('message', function (topic, message) {
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mqtt.MqttClient" id="apidoc.module.mqtt.MqttClient">module mqtt.MqttClient</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.MqttClient" id="apidoc.element.mqtt.MqttClient.MqttClient">
+        function <span class="apidocSignatureSpan">mqtt.</span>MqttClient
+        <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function MqttClient(streamBuilder, options) {
+  var k
+  var that = this
+
+  if (!(this instanceof MqttClient)) {
+    return new MqttClient(streamBuilder, options)
+  }
+
+  this.options = options || {}
+
+  // Defaults
+  for (k in defaultConnectOptions) {
+    if (typeof this.options[k] === 'undefined') {
+      this.options[k] = defaultConnectOptions[k]
+    } else {
+      this.options[k] = options[k]
+    }
+  }
+
+  this.options.clientId = this.options.clientId || defaultId()
+
+  this.streamBuilder = streamBuilder
+
+  // Inflight message storages
+  this.outgoingStore = this.options.outgoingStore || new Store()
+  this.incomingStore = this.options.incomingStore || new Store()
+
+  // Should QoS zero messages be queued when the connection is broken?
+  this.queueQoSZero = this.options.queueQoSZero === undefined ? true : this.options.queueQoSZero
+
+  // map of subscribed topics to support reconnection
+  this._resubscribeTopics = {}
+
+  // Ping timer, setup in _setupPingTimer
+  this.pingTimer = null
+  // Is the client connected?
+  this.connected = false
+  // Are we disconnecting?
+  this.disconnecting = false
+  // Packet queue
+  this.queue = []
+  // connack timer
+  this.connackTimer = null
+  // Reconnect timer
+  this.reconnectTimer = null
+  // MessageIDs starting with 1
+  this.nextId = Math.floor(Math.random() * 65535)
+
+  // Inflight callbacks
+  this.outgoing = {}
+
+  // Mark connected on connect
+  this.on('connect', function () {
+    if (this.disconnected) {
+      return
+    }
+
+    this.connected = true
+    var outStore = null
+    outStore = this.outgoingStore.createStream()
+
+    // Control of stored messages
+    outStore.once('readable', function () {
+      function storeDeliver () {
+        var packet = outStore.read(1)
+        var cb
+
+        if (!packet) {
+          return
+        }
+
+        // Avoid unnecesary stream read operations when disconnected
+        if (!that.disconnecting &amp;&amp; !that.reconnectTimer &amp;&amp; that.options.reconnectPeriod &gt; 0) {
+          outStore.read(0)
+          cb = that.outgoing[packet.messageId]
+          that.outgoing[packet.messageId] = function (err, status) {
+            // Ensure that the original callback passed in to publish gets invoked
+            if (cb) {
+              cb(err, status)
+            }
+
+            storeDeliver()
+          }
+          that._sendPacket(packet)
+        } else if (outStore.destroy) {
+          outStore.destroy()
+        }
+      }
+      storeDeliver()
+    })
+    .on('error', this.emit.bind(this, 'error'))
+  })
+
+  // Mark disconnected on stream close
+  this.on('close', function () {
+    this.connected = false
+    clearTimeout(this.connackTimer)
+  })
+
+  // Setup ping timer
+  this.on('connect', this._setupPingTimer)
+
+  // Send queued packets
+  this.on('connect', function () {
+    var queue = this.queue
+
+    function deliver () {
+      var entry = queue.shift()
+      var packet = null
+
+      if (!entry) {
+        return
+      }
+
+      packet = entry.packet
+
+      that._sendPacket(
+        packet,
+        function (err) {
+          if (entry.cb) {
+            entry.cb(err)
+          }
+          deliver()
+        }
+      )
+    }
+
+    deliver()
+  })
+
+  // resubscribe
+  this.on('reconnect', function () {
+    if (this.options.clean &amp;&amp; Object.keys(this._resubscribeTopics).length &gt; 0) {
+      this.subscribe(this._resubscribeTopics)
+    }
+  })
+
+  // Clear ping timer
+  this.on('close', function () {
+    if (that.pingTimer !== null) {
+      that.pingTimer.clear()
+      that.pingTimer = null
+    }
+  })
+
+  // Setup reconnect timer on disconnect
+  this.on('close', this._setupReconnect)
+
+  events.EventEmitter.call(this)
+
+  this._setupStream()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.super_" id="apidoc.element.mqtt.MqttClient.super_">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mqtt.MqttClient.prototype" id="apidoc.module.mqtt.MqttClient.prototype">module mqtt.MqttClient.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._checkDisconnecting" id="apidoc.element.mqtt.MqttClient.prototype._checkDisconnecting">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_checkDisconnecting
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_checkDisconnecting = function (callback) {
+  if (this.disconnecting) {
+    if (callback) {
+      callback(new Error('client disconnecting'))
+    } else {
+      this.emit('error', new Error('client disconnecting'))
+    }
+  }
+  return this.disconnecting
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._checkPing" id="apidoc.element.mqtt.MqttClient.prototype._checkPing">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_checkPing
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_checkPing = function () {
+  if (this.pingResp) {
+    this.pingResp = false
+    this._sendPacket({ cmd: 'pingreq' })
+  } else {
+    // do a forced cleanup since socket will be in bad shape
+    this._cleanUp(true)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._cleanUp" id="apidoc.element.mqtt.MqttClient.prototype._cleanUp">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_cleanUp
+        <span class="apidocSignatureSpan">(forced, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_cleanUp = function (forced, done) {
+  if (done) {
+    this.stream.on('close', done)
+  }
+
+  if (forced) {
+    this.stream.destroy()
+  } else {
+    this._sendPacket(
+      { cmd: 'disconnect' },
+      setImmediate.bind(
+        null,
+        this.stream.end.bind(this.stream)
+      )
+    )
+  }
+
+  if (!this.disconnecting) {
+    this._clearReconnect()
+    this._setupReconnect()
+  }
+
+  if (this.pingTimer !== null) {
+    this.pingTimer.clear()
+    this.pingTimer = null
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._clearReconnect" id="apidoc.element.mqtt.MqttClient.prototype._clearReconnect">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_clearReconnect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_clearReconnect = function () {
+  if (this.reconnectTimer) {
+    clearInterval(this.reconnectTimer)
+    this.reconnectTimer = null
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._handleAck" id="apidoc.element.mqtt.MqttClient.prototype._handleAck">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handleAck
+        <span class="apidocSignatureSpan">(packet)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleAck = function (packet) {
+<span class="apidocCodeCommentSpan">  /* eslint no-fallthrough: "off" */
+</span>  var mid = packet.messageId
+  var type = packet.cmd
+  var response = null
+  var cb = this.outgoing[mid]
+  var that = this
+
+  if (!cb) {
+    // Server sent an ack in error, ignore it.
+    return
+  }
+
+  // Process
+  switch (type) {
+    case 'pubcomp':
+      // same thing as puback for QoS 2
+    case 'puback':
+      // Callback - we're done
+      delete this.outgoing[mid]
+      this.outgoingStore.del(packet, cb)
+      break
+    case 'pubrec':
+      response = {
+        cmd: 'pubrel',
+        qos: 2,
+        messageId: mid
+      }
+
+      this._sendPacket(response)
+      break
+    case 'suback':
+      delete this.outgoing[mid]
+      cb(null, packet)
+      break
+    case 'unsuback':
+      delete this.outgoing[mid]
+      cb(null)
+      break
+    default:
+      that.emit('error', new Error('unrecognized packet type'))
+  }
+
+  if (this.disconnecting &amp;&amp;
+      Object.keys(this.outgoing).length === 0) {
+    this.emit('outgoingEmpty')
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._handleConnack" id="apidoc.element.mqtt.MqttClient.prototype._handleConnack">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handleConnack
+        <span class="apidocSignatureSpan">(packet)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handleConnack = function (packet) {
+  var rc = packet.returnCode
+  var errors = [
+    '',
+    'Unacceptable protocol version',
+    'Identifier rejected',
+    'Server unavailable',
+    'Bad username or password',
+    'Not authorized'
+  ]
+
+  clearTimeout(this.connackTimer)
+
+  if (rc === 0) {
+    this.reconnecting = false
+    this.emit('connect', packet)
+  } else if (rc &gt; 0) {
+    this.emit('error', new Error('Connection refused: ' + errors[rc]))
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._handlePacket" id="apidoc.element.mqtt.MqttClient.prototype._handlePacket">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePacket
+        <span class="apidocSignatureSpan">(packet, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handlePacket = function (packet, done) {
+  this.emit('packetreceive', packet)
+
+  switch (packet.cmd) {
+    case 'publish':
+      this._handlePublish(packet, done)
+      break
+    case 'puback':
+    case 'pubrec':
+    case 'pubcomp':
+    case 'suback':
+    case 'unsuback':
+      this._handleAck(packet)
+      done()
+      break
+    case 'pubrel':
+      this._handlePubrel(packet, done)
+      break
+    case 'connack':
+      this._handleConnack(packet)
+      done()
+      break
+    case 'pingresp':
+      this._handlePingresp(packet)
+      done()
+      break
+    default:
+      // do nothing
+      // maybe we should do an error handling
+      // or just log it
+      break
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._handlePingresp" id="apidoc.element.mqtt.MqttClient.prototype._handlePingresp">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePingresp
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handlePingresp = function () {
+  this.pingResp = true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._handlePublish" id="apidoc.element.mqtt.MqttClient.prototype._handlePublish">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePublish
+        <span class="apidocSignatureSpan">(packet, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handlePublish = function (packet, done) {
+  var topic = packet.topic.toString()
+  var message = packet.payload
+  var qos = packet.qos
+  var mid = packet.messageId
+  var that = this
+
+  switch (qos) {
+    case 2:
+      this.incomingStore.put(packet, function () {
+        that._sendPacket({cmd: 'pubrec', messageId: mid}, done)
+      })
+      break
+    case 1:
+      // do not wait sending a puback
+      // no callback passed
+      this._sendPacket({
+        cmd: 'puback',
+        messageId: mid
+      })
+<span class="apidocCodeCommentSpan">      /* falls through */
+</span>    case 0:
+      // emit the message event for both qos 1 and 0
+      this.emit('message', topic, message, packet)
+      this.handleMessage(packet, done)
+      break
+    default:
+      // do nothing
+      // log or throw an error about unknown qos
+      break
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._handlePubrel" id="apidoc.element.mqtt.MqttClient.prototype._handlePubrel">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_handlePubrel
+        <span class="apidocSignatureSpan">(packet, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_handlePubrel = function (packet, callback) {
+  var mid = packet.messageId
+  var that = this
+
+  that.incomingStore.get(packet, function (err, pub) {
+    if (err) {
+      return that.emit('error', err)
+    }
+
+    if (pub.cmd !== 'pubrel') {
+      that.emit('message', pub.topic, pub.payload, pub)
+      that.incomingStore.put(packet)
+    }
+
+    that._sendPacket({cmd: 'pubcomp', messageId: mid}, callback)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._nextId" id="apidoc.element.mqtt.MqttClient.prototype._nextId">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_nextId
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_nextId = function () {
+  var id = this.nextId++
+  // Ensure 16 bit unsigned int:
+  if (id === 65535) {
+    this.nextId = 1
+  }
+  return id
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._reconnect" id="apidoc.element.mqtt.MqttClient.prototype._reconnect">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_reconnect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_reconnect = function () {
+  this.emit('reconnect')
+  this._setupStream()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._sendPacket" id="apidoc.element.mqtt.MqttClient.prototype._sendPacket">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_sendPacket
+        <span class="apidocSignatureSpan">(packet, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_sendPacket = function (packet, cb) {
+  if (!this.connected) {
+    if (packet.qos &gt; 0 || packet.cmd !== 'publish' || this.queueQoSZero) {
+      this.queue.push({ packet: packet, cb: cb })
+    } else if (cb) {
+      cb(new Error('No connection to broker'))
+    }
+
+    return
+  }
+
+  // When sending a packet, reschedule the ping timer
+  this._shiftPingInterval()
+
+  if (packet.cmd !== 'publish') {
+    sendPacket(this, packet, cb)
+    return
+  }
+
+  switch (packet.qos) {
+    case 2:
+    case 1:
+      storeAndSend(this, packet, cb)
+      break
+<span class="apidocCodeCommentSpan">    /**
+     * no need of case here since it will be caught by default
+     * and jshint comply that before default it must be a break
+     * anyway it will result in -1 evaluation
+     */
+</span>    case 0:
+      /* falls through */
+    default:
+      sendPacket(this, packet, cb)
+      break
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._setupPingTimer" id="apidoc.element.mqtt.MqttClient.prototype._setupPingTimer">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_setupPingTimer
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_setupPingTimer = function () {
+  var that = this
+
+  if (!this.pingTimer &amp;&amp; this.options.keepalive) {
+    this.pingResp = true
+    this.pingTimer = reInterval(function () {
+      that._checkPing()
+    }, this.options.keepalive * 1000)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._setupReconnect" id="apidoc.element.mqtt.MqttClient.prototype._setupReconnect">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_setupReconnect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_setupReconnect = function () {
+  var that = this
+
+  if (!that.disconnecting &amp;&amp; !that.reconnectTimer &amp;&amp; (that.options.reconnectPeriod &gt; 0)) {
+    if (!this.reconnecting) {
+      this.emit('offline')
+      this.reconnecting = true
+    }
+    that.reconnectTimer = setInterval(function () {
+      that._reconnect()
+    }, that.options.reconnectPeriod)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._setupStream" id="apidoc.element.mqtt.MqttClient.prototype._setupStream">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_setupStream
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_setupStream = function () {
+  var connectPacket
+  var that = this
+  var writable = new Writable()
+  var parser = mqttPacket.parser(this.options)
+  var completeParse = null
+  var packets = []
+
+  this._clearReconnect()
+
+  this.stream = this.streamBuilder(this)
+
+  parser.on('packet', function (packet) {
+    packets.push(packet)
+  })
+
+  function process () {
+    var packet = packets.shift()
+    var done = completeParse
+
+    if (packet) {
+      that._handlePacket(packet, process)
+    } else {
+      completeParse = null
+      done()
+    }
+  }
+
+  writable._write = function (buf, enc, done) {
+    completeParse = done
+    parser.parse(buf)
+    process()
+  }
+
+  this.stream.pipe(writable)
+
+  // Suppress connection errors
+  this.stream.on('error', nop)
+
+  // Echo stream close
+  eos(this.stream, this.emit.bind(this, 'close'))
+
+  // Send a connect packet
+  connectPacket = Object.create(this.options)
+  connectPacket.cmd = 'connect'
+  // avoid message queue
+  sendPacket(this, connectPacket)
+
+  // Echo connection errors
+  parser.on('error', this.emit.bind(this, 'error'))
+
+  // many drain listeners are needed for qos 1 callbacks if the connection is intermittent
+  this.stream.setMaxListeners(1000)
+
+  clearTimeout(this.connackTimer)
+  this.connackTimer = setTimeout(function () {
+    that._cleanUp(true)
+  }, this.options.connectTimeout)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype._shiftPingInterval" id="apidoc.element.mqtt.MqttClient.prototype._shiftPingInterval">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>_shiftPingInterval
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_shiftPingInterval = function () {
+  if (this.pingTimer &amp;&amp; this.options.keepalive &amp;&amp; this.options.reschedulePings) {
+    this.pingTimer.reschedule(this.options.keepalive * 1000)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype.end" id="apidoc.element.mqtt.MqttClient.prototype.end">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>end
+        <span class="apidocSignatureSpan">(force, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (force, cb) {
+  var that = this
+
+  if (typeof force === 'function') {
+    cb = force
+    force = false
+  }
+
+  function closeStores () {
+    that.disconnected = true
+    that.incomingStore.close(function () {
+      that.outgoingStore.close(cb)
+    })
+  }
+
+  function finish () {
+    // defer closesStores of an I/O cycle,
+    // just to make sure things are
+    // ok for websockets
+    that._cleanUp(force, setImmediate.bind(null, closeStores))
+  }
+
+  if (this.disconnecting) {
+    return this
+  }
+
+  this._clearReconnect()
+
+  this.disconnecting = true
+
+  if (!force &amp;&amp; Object.keys(this.outgoing).length &gt; 0) {
+    // wait 10ms, just to be sure we received all of it
+    this.once('outgoingEmpty', setTimeout.bind(null, finish, 10))
+  } else {
+    finish()
+  }
+
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  client.subscribe('presence')
+  client.publish('presence', 'Hello mqtt')
+})
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  client.<span class="apidocCodeKeywordSpan">end</span>()
+})
+```
+
+output:
+```
+Hello mqtt
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype.getLastMessageId" id="apidoc.element.mqtt.MqttClient.prototype.getLastMessageId">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>getLastMessageId
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLastMessageId = function () {
+  return (this.nextId === 1) ? 65535 : (this.nextId - 1)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype.handleMessage" id="apidoc.element.mqtt.MqttClient.prototype.handleMessage">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>handleMessage
+        <span class="apidocSignatureSpan">(packet, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">handleMessage = function (packet, callback) {
+  callback()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype.publish" id="apidoc.element.mqtt.MqttClient.prototype.publish">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>publish
+        <span class="apidocSignatureSpan">(topic, message, opts, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">publish = function (topic, message, opts, callback) {
+  var packet
+
+  // .publish(topic, payload, cb);
+  if (typeof opts === 'function') {
+    callback = opts
+    opts = null
+  }
+
+  // Default opts
+  if (!opts) {
+    opts = {qos: 0, retain: false}
+  }
+
+  if (this._checkDisconnecting(callback)) {
+    return this
+  }
+
+  packet = {
+    cmd: 'publish',
+    topic: topic,
+    payload: message,
+    qos: opts.qos,
+    retain: opts.retain,
+    messageId: this._nextId()
+  }
+
+  switch (opts.qos) {
+    case 1:
+    case 2:
+
+      // Add to callbacks
+      this.outgoing[packet.messageId] = callback || nop
+      this._sendPacket(packet)
+      break
+    default:
+      this._sendPacket(packet, callback)
+      break
+  }
+
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+var mqtt = require('mqtt')
+var client  = mqtt.connect('mqtt://test.mosquitto.org')
+
+client.on('connect', function () {
+  client.subscribe('presence')
+  client.<span class="apidocCodeKeywordSpan">publish</span>('presence', 'Hello mqtt')
+})
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  client.end()
+})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype.subscribe" id="apidoc.element.mqtt.MqttClient.prototype.subscribe">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>subscribe
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">subscribe = function () {
+  var packet
+  var args = Array.prototype.slice.call(arguments)
+  var subs = []
+  var obj = args.shift()
+  var callback = args.pop() || nop
+  var opts = args.pop()
+  var invalidTopic
+  var that = this
+
+  if (typeof obj === 'string') {
+    obj = [obj]
+  }
+
+  if (typeof callback !== 'function') {
+    opts = callback
+    callback = nop
+  }
+
+  invalidTopic = validations.validateTopics(obj)
+  if (invalidTopic !== null) {
+    setImmediate(callback, new Error('Invalid topic ' + invalidTopic))
+    return this
+  }
+
+  if (this._checkDisconnecting(callback)) {
+    return this
+  }
+
+  if (!opts) {
+    opts = { qos: 0 }
+  }
+
+  if (Array.isArray(obj)) {
+    obj.forEach(function (topic) {
+      subs.push({
+        topic: topic,
+        qos: opts.qos
+      })
+    })
+  } else {
+    Object
+      .keys(obj)
+      .forEach(function (k) {
+        subs.push({
+          topic: k,
+          qos: obj[k]
+        })
+      })
+  }
+
+  packet = {
+    cmd: 'subscribe',
+    subscriptions: subs,
+    qos: 1,
+    retain: false,
+    dup: false,
+    messageId: this._nextId()
+  }
+
+  // subscriptions to resubscribe to in case of disconnect
+  subs.forEach(function (sub) {
+    that._resubscribeTopics[sub.topic] = sub.qos
+  })
+
+  this.outgoing[packet.messageId] = function (err, packet) {
+    if (!err) {
+      var granted = packet.granted
+      for (var i = 0; i &lt; granted.length; i += 1) {
+        subs[i].qos = granted[i]
+      }
+    }
+
+    callback(err, subs)
+  }
+
+  this._sendPacket(packet)
+
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+For the sake of simplicity, let's put the subscriber and the publisher in the same file:
+
+```js
+var mqtt = require('mqtt')
+var client  = mqtt.connect('mqtt://test.mosquitto.org')
+
+client.on('connect', function () {
+client.<span class="apidocCodeKeywordSpan">subscribe</span>('presence')
+client.publish('presence', 'Hello mqtt')
+})
+
+client.on('message', function (topic, message) {
+// message is Buffer
+console.log(message.toString())
+client.end()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.MqttClient.prototype.unsubscribe" id="apidoc.element.mqtt.MqttClient.prototype.unsubscribe">
+        function <span class="apidocSignatureSpan">mqtt.MqttClient.prototype.</span>unsubscribe
+        <span class="apidocSignatureSpan">(topic, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unsubscribe = function (topic, callback) {
+  var packet = {
+    cmd: 'unsubscribe',
+    qos: 1,
+    messageId: this._nextId()
+  }
+  var that = this
+
+  callback = callback || nop
+
+  if (this._checkDisconnecting(callback)) {
+    return this
+  }
+
+  if (typeof topic === 'string') {
+    packet.unsubscriptions = [topic]
+  } else if (typeof topic === 'object' &amp;&amp; topic.length) {
+    packet.unsubscriptions = topic
+  }
+
+  packet.unsubscriptions.forEach(function (topic) {
+    delete that._resubscribeTopics[topic]
+  })
+
+  this.outgoing[packet.messageId] = callback
+
+  this._sendPacket(packet)
+
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mqtt.Store" id="apidoc.module.mqtt.Store">module mqtt.Store</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Store.Store" id="apidoc.element.mqtt.Store.Store">
+        function <span class="apidocSignatureSpan">mqtt.</span>Store
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Store() {
+  if (!(this instanceof Store)) {
+    return new Store()
+  }
+
+  this._inflights = {}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&lt;a name="reconnecting"&gt;&lt;/a&gt;
+### mqtt.Client#reconnecting
+
+Boolean : set to `true` if the client is trying to reconnect to the server. `false` otherwise.
+
+-------------------------------------------------------
+&lt;a name="store"&gt;&lt;/a&gt;
+### mqtt.<span class="apidocCodeKeywordSpan">Store</span>()
+
+In-memory implementation of the message store.
+
+Another implementaion is
+[mqtt-level-store](http://npm.im/mqtt-level-store) which uses
+[Level-browserify](http://npm.im/level-browserify) to store the inflight
+data, making it usable both in Node and the Browser.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mqtt.Store.prototype" id="apidoc.module.mqtt.Store.prototype">module mqtt.Store.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Store.prototype.close" id="apidoc.element.mqtt.Store.prototype.close">
+        function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>close
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function (cb) {
+  this._inflights = null
+  if (cb) {
+    cb()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Store.prototype.createStream" id="apidoc.element.mqtt.Store.prototype.createStream">
+        function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>createStream
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createStream = function () {
+  var stream = new Readable(streamsOpts)
+  var inflights = this._inflights
+  var ids = Object.keys(this._inflights)
+  var destroyed = false
+  var i = 0
+
+  stream._read = function () {
+    if (!destroyed &amp;&amp; i &lt; ids.length) {
+      this.push(inflights[ids[i++]])
+    } else {
+      this.push(null)
+    }
+  }
+
+  stream.destroy = function () {
+    if (destroyed) {
+      return
+    }
+
+    var self = this
+
+    destroyed = true
+
+    process.nextTick(function () {
+      self.emit('close')
+    })
+  }
+
+  return stream
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Store.prototype.del" id="apidoc.element.mqtt.Store.prototype.del">
+        function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>del
+        <span class="apidocSignatureSpan">(packet, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">del = function (packet, cb) {
+  packet = this._inflights[packet.messageId]
+  if (packet) {
+    delete this._inflights[packet.messageId]
+    cb(null, packet)
+  } else if (cb) {
+    cb(new Error('missing packet'))
+  }
+
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Store.prototype.get" id="apidoc.element.mqtt.Store.prototype.get">
+        function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>get
+        <span class="apidocSignatureSpan">(packet, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (packet, cb) {
+  packet = this._inflights[packet.messageId]
+  if (packet) {
+    cb(null, packet)
+  } else if (cb) {
+    cb(new Error('missing packet'))
+  }
+
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.Store.prototype.put" id="apidoc.element.mqtt.Store.prototype.put">
+        function <span class="apidocSignatureSpan">mqtt.Store.prototype.</span>put
+        <span class="apidocSignatureSpan">(packet, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">put = function (packet, cb) {
+  this._inflights[packet.messageId] = packet
+
+  if (cb) {
+    cb()
+  }
+
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mqtt.connect" id="apidoc.module.mqtt.connect">module mqtt.connect</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.connect.connect" id="apidoc.element.mqtt.connect.connect">
+        function <span class="apidocSignatureSpan">mqtt.</span>connect
+        <span class="apidocSignatureSpan">(brokerUrl, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function connect(brokerUrl, opts) {
+  if ((typeof brokerUrl === 'object') &amp;&amp; !opts) {
+    opts = brokerUrl
+    brokerUrl = null
+  }
+
+  opts = opts || {}
+
+  if (brokerUrl) {
+    var parsed = url.parse(brokerUrl, true)
+    if (parsed.port != null) {
+      parsed.port = Number(parsed.port)
+    }
+
+    opts = xtend(parsed, opts)
+
+    if (opts.protocol === null) {
+      throw new Error('Missing protocol')
+    }
+    opts.protocol = opts.protocol.replace(/:$/, '')
+  }
+
+  // merge in the auth options if supplied
+  parseAuthOptions(opts)
+
+  // support clientId passed in the query string of the url
+  if (opts.query &amp;&amp; typeof opts.query.clientId === 'string') {
+    opts.clientId = opts.query.clientId
+  }
+
+  if (opts.cert &amp;&amp; opts.key) {
+    if (opts.protocol) {
+      if (['mqtts', 'wss'].indexOf(opts.protocol) === -1) {
+<span class="apidocCodeCommentSpan">        /*
+         * jshint and eslint
+         * complains that break from default cannot be reached after throw
+         * it is a foced exit from a control structure
+         * maybe add a check after switch to see if it went through default
+         * and then throw the error
+        */
+</span>        /* jshint -W027 */
+        /* eslint no-unreachable:1 */
+        switch (opts.protocol) {
+          case 'mqtt':
+            opts.protocol = 'mqtts'
+            break
+          case 'ws':
+            opts.protocol = 'wss'
+            break
+          default:
+            throw new Error('Unknown protocol for secure connection: "' + opts.protocol + '"!')
+            break
+        }
+        /* eslint no-unreachable:0 */
+        /* jshint +W027 */
+      }
+    } else {
+      // don't know what protocol he want to use, mqtts or wss
+      throw new Error('Missing secure protocol key')
+    }
+  }
+
+  if (!protocols[opts.protocol]) {
+    var isSecure = ['mqtts', 'wss'].indexOf(opts.protocol) !== -1
+    opts.protocol = [
+      'mqtt',
+      'mqtts',
+      'ws',
+      'wss'
+    ].filter(function (key, index) {
+      if (isSecure &amp;&amp; index % 2 === 0) {
+        // Skip insecure protocols when requesting a secure one.
+        return false
+      }
+      return (typeof protocols[key] === 'function')
+    })[0]
+  }
+
+  if (opts.clean === false &amp;&amp; !opts.clientId) {
+    throw new Error('Missing clientId for unclean clients')
+  }
+
+  function wrapper (client) {
+    if (opts.servers) {
+      if (!client._reconnectCount || client._reconnectCount === opts.servers.length) {
+        client._reconnectCount = 0
+      }
+
+      opts.host = opts.servers[client._reconnectCount].host
+      opts.port = opts.servers[client._reconnectCount].port
+      opts.hostname = opts.host
+
+      client._reconnectCount++
+    }
+
+    return protocols[opts.protocol](client, opts)
+  }
+
+  return new MqttClient(wrapper, opts)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&lt;a name="example"&gt;&lt;/a&gt;
+## Example
+
+For the sake of simplicity, let's put the subscriber and the publisher in the same file:
+
+```js
+var mqtt = require('mqtt')
+var client  = mqtt.<span class="apidocCodeKeywordSpan">connect</span>('mqtt://test.mosquitto.org')
+
+client.on('connect', function () {
+  client.subscribe('presence')
+  client.publish('presence', 'Hello mqtt')
+})
+
+client.on('message', function (topic, message) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.connect.MqttClient" id="apidoc.element.mqtt.connect.MqttClient">
+        function <span class="apidocSignatureSpan">mqtt.connect.</span>MqttClient
+        <span class="apidocSignatureSpan">(streamBuilder, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function MqttClient(streamBuilder, options) {
+  var k
+  var that = this
+
+  if (!(this instanceof MqttClient)) {
+    return new MqttClient(streamBuilder, options)
+  }
+
+  this.options = options || {}
+
+  // Defaults
+  for (k in defaultConnectOptions) {
+    if (typeof this.options[k] === 'undefined') {
+      this.options[k] = defaultConnectOptions[k]
+    } else {
+      this.options[k] = options[k]
+    }
+  }
+
+  this.options.clientId = this.options.clientId || defaultId()
+
+  this.streamBuilder = streamBuilder
+
+  // Inflight message storages
+  this.outgoingStore = this.options.outgoingStore || new Store()
+  this.incomingStore = this.options.incomingStore || new Store()
+
+  // Should QoS zero messages be queued when the connection is broken?
+  this.queueQoSZero = this.options.queueQoSZero === undefined ? true : this.options.queueQoSZero
+
+  // map of subscribed topics to support reconnection
+  this._resubscribeTopics = {}
+
+  // Ping timer, setup in _setupPingTimer
+  this.pingTimer = null
+  // Is the client connected?
+  this.connected = false
+  // Are we disconnecting?
+  this.disconnecting = false
+  // Packet queue
+  this.queue = []
+  // connack timer
+  this.connackTimer = null
+  // Reconnect timer
+  this.reconnectTimer = null
+  // MessageIDs starting with 1
+  this.nextId = Math.floor(Math.random() * 65535)
+
+  // Inflight callbacks
+  this.outgoing = {}
+
+  // Mark connected on connect
+  this.on('connect', function () {
+    if (this.disconnected) {
+      return
+    }
+
+    this.connected = true
+    var outStore = null
+    outStore = this.outgoingStore.createStream()
+
+    // Control of stored messages
+    outStore.once('readable', function () {
+      function storeDeliver () {
+        var packet = outStore.read(1)
+        var cb
+
+        if (!packet) {
+          return
+        }
+
+        // Avoid unnecesary stream read operations when disconnected
+        if (!that.disconnecting &amp;&amp; !that.reconnectTimer &amp;&amp; that.options.reconnectPeriod &gt; 0) {
+          outStore.read(0)
+          cb = that.outgoing[packet.messageId]
+          that.outgoing[packet.messageId] = function (err, status) {
+            // Ensure that the original callback passed in to publish gets invoked
+            if (cb) {
+              cb(err, status)
+            }
+
+            storeDeliver()
+          }
+          that._sendPacket(packet)
+        } else if (outStore.destroy) {
+          outStore.destroy()
+        }
+      }
+      storeDeliver()
+    })
+    .on('error', this.emit.bind(this, 'error'))
+  })
+
+  // Mark disconnected on stream close
+  this.on('close', function () {
+    this.connected = false
+    clearTimeout(this.connackTimer)
+  })
+
+  // Setup ping timer
+  this.on('connect', this._setupPingTimer)
+
+  // Send queued packets
+  this.on('connect', function () {
+    var queue = this.queue
+
+    function deliver () {
+      var entry = queue.shift()
+      var packet = null
+
+      if (!entry) {
+        return
+      }
+
+      packet = entry.packet
+
+      that._sendPacket(
+        packet,
+        function (err) {
+          if (entry.cb) {
+            entry.cb(err)
+          }
+          deliver()
+        }
+      )
+    }
+
+    deliver()
+  })
+
+  // resubscribe
+  this.on('reconnect', function () {
+    if (this.options.clean &amp;&amp; Object.keys(this._resubscribeTopics).length &gt; 0) {
+      this.subscribe(this._resubscribeTopics)
+    }
+  })
+
+  // Clear ping timer
+  this.on('close', function () {
+    if (that.pingTimer !== null) {
+      that.pingTimer.clear()
+      that.pingTimer = null
+    }
+  })
+
+  // Setup reconnect timer on disconnect
+  this.on('close', this._setupReconnect)
+
+  events.EventEmitter.call(this)
+
+  this._setupStream()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mqtt.validations" id="apidoc.module.mqtt.validations">module mqtt.validations</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mqtt.validations.validateTopics" id="apidoc.element.mqtt.validations.validateTopics">
+        function <span class="apidocSignatureSpan">mqtt.validations.</span>validateTopics
+        <span class="apidocSignatureSpan">(topics)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function validateTopics(topics) {
+  if (topics.length === 0) {
+    return 'empty_topic_list'
+  }
+  for (var i = 0; i &lt; topics.length; i++) {
+    if (!validateTopic(topics[i])) {
+      return topics[i]
+    }
+  }
+  return null
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>

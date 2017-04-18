@@ -51,7 +51,7 @@
 
         href="https://github.com/mqttjs/MQTT.js#readme"
 
-    >mqtt (v2.6.0)</a>
+    >mqtt (v2.6.2)</a>
 </h1>
 <h4>A library for the MQTT protocol</h4>
 <div class="apidocSectionDiv"><a
@@ -1338,7 +1338,9 @@ client.on(&#x27;message&#x27;, function (topic, message) {
     this.reconnecting = false
     this.emit(&#x27;connect&#x27;, packet)
   } else if (rc &#x3e; 0) {
-    this.emit(&#x27;error&#x27;, new Error(&#x27;Connection refused: &#x27; + errors[rc]))
+    var err = new Error(&#x27;Connection refused: &#x27; + errors[rc])
+    err.code = rc
+    this.emit(&#x27;error&#x27;, err)
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>

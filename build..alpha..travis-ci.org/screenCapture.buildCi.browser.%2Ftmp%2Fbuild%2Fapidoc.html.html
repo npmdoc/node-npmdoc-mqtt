@@ -784,7 +784,23 @@ WebSocket, ecc).
 
   this._setupStream()
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+describe('MqttClient', function () {
+describe('creating', function () {
+  it('should allow instantiation of MqttClient without the \'new\' operator', function (done) {
+    should(function () {
+      var client
+      try {
+        client = mqtt.<span class="apidocCodeKeywordSpan">MqttClient</span>(function () {
+          throw Error('break')
+        }, {})
+        client.end()
+      } catch (err) {
+        if (err.message !== 'break') {
+          throw err
+        }
+...</pre></li>
     </ul>
 
 
@@ -1122,7 +1138,23 @@ client.on('message', function (topic, message) {
 
   this._setupStream()
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+describe('MqttClient', function () {
+describe('creating', function () {
+  it('should allow instantiation of MqttClient without the \'new\' operator', function (done) {
+    should(function () {
+      var client
+      try {
+        client = mqtt.<span class="apidocCodeKeywordSpan">MqttClient</span>(function () {
+          throw Error('break')
+        }, {})
+        client.end()
+      } catch (err) {
+        if (err.message !== 'break') {
+          throw err
+        }
+...</pre></li>
     </ul>
 
 
@@ -1164,7 +1196,23 @@ client.on('message', function (topic, message) {
   }
   return this.disconnecting
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+// Default opts
+if (!opts) {
+  opts = {qos: 0, retain: false}
+}
+
+if (this.<span class="apidocCodeKeywordSpan">_checkDisconnecting</span>(callback)) {
+  return this
+}
+
+packet = {
+  cmd: 'publish',
+  topic: topic,
+  payload: message,
+...</pre></li>
     </ul>
 
 
@@ -1185,7 +1233,23 @@ client.on('message', function (topic, message) {
     this._cleanUp(true)
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*/
+MqttClient.prototype._setupPingTimer = function () {
+ var that = this
+
+ if (!this.pingTimer &amp;&amp; this.options.keepalive) {
+   this.pingResp = true
+   this.pingTimer = reInterval(function () {
+     that.<span class="apidocCodeKeywordSpan">_checkPing</span>()
+   }, this.options.keepalive * 1000)
+ }
+}
+
+/**
+* _shiftPingInterval - reschedule the ping interval
+*
+...</pre></li>
     </ul>
 
 
@@ -1224,7 +1288,23 @@ client.on('message', function (topic, message) {
     this.pingTimer = null
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+parser.on('error', this.emit.bind(this, 'error'))
+
+// many drain listeners are needed for qos 1 callbacks if the connection is intermittent
+this.stream.setMaxListeners(1000)
+
+clearTimeout(this.connackTimer)
+this.connackTimer = setTimeout(function () {
+  that.<span class="apidocCodeKeywordSpan">_cleanUp</span>(true)
+}, this.options.connectTimeout)
+}
+
+MqttClient.prototype._handlePacket = function (packet, done) {
+this.emit('packetreceive', packet)
+
+switch (packet.cmd) {
+...</pre></li>
     </ul>
 
 
@@ -1242,7 +1322,22 @@ client.on('message', function (topic, message) {
     this.reconnectTimer = null
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var connectPacket
+var that = this
+var writable = new Writable()
+var parser = mqttPacket.parser(this.options)
+var completeParse = null
+var packets = []
+
+this.<span class="apidocCodeKeywordSpan">_clearReconnect</span>()
+
+this.stream = this.streamBuilder(this)
+
+parser.on('packet', function (packet) {
+  packets.push(packet)
+})
+...</pre></li>
     </ul>
 
 
@@ -1302,7 +1397,23 @@ client.on('message', function (topic, message) {
     this.emit('outgoingEmpty')
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._handlePublish(packet, done)
+  break
+case 'puback':
+case 'pubrec':
+case 'pubcomp':
+case 'suback':
+case 'unsuback':
+  this.<span class="apidocCodeKeywordSpan">_handleAck</span>(packet)
+  done()
+  break
+case 'pubrel':
+  this._handlePubrel(packet, done)
+  break
+case 'connack':
+  this._handleConnack(packet)
+...</pre></li>
     </ul>
 
 
@@ -1336,7 +1447,23 @@ client.on('message', function (topic, message) {
     this.emit('error', err)
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._handleAck(packet)
+  done()
+  break
+case 'pubrel':
+  this._handlePubrel(packet, done)
+  break
+case 'connack':
+  this.<span class="apidocCodeKeywordSpan">_handleConnack</span>(packet)
+  done()
+  break
+case 'pingresp':
+  this._handlePingresp(packet)
+  done()
+  break
+default:
+...</pre></li>
     </ul>
 
 
@@ -1381,7 +1508,23 @@ client.on('message', function (topic, message) {
       break
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+})
+
+function process () {
+  var packet = packets.shift()
+  var done = completeParse
+
+  if (packet) {
+    that.<span class="apidocCodeKeywordSpan">_handlePacket</span>(packet, process)
+  } else {
+    completeParse = null
+    done()
+  }
+}
+
+writable._write = function (buf, enc, done) {
+...</pre></li>
     </ul>
 
 
@@ -1396,7 +1539,23 @@ client.on('message', function (topic, message) {
     <li>description and source-code<pre class="apidocCodePre">_handlePingresp = function () {
   this.pingResp = true
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._handlePubrel(packet, done)
+  break
+case 'connack':
+  this._handleConnack(packet)
+  done()
+  break
+case 'pingresp':
+  this.<span class="apidocCodeKeywordSpan">_handlePingresp</span>(packet)
+  done()
+  break
+default:
+  // do nothing
+  // maybe we should do an error handling
+  // or just log it
+  break
+...</pre></li>
     </ul>
 
 
@@ -1440,7 +1599,23 @@ client.on('message', function (topic, message) {
       break
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+MqttClient.prototype._handlePacket = function (packet, done) {
+this.emit('packetreceive', packet)
+
+switch (packet.cmd) {
+  case 'publish':
+    this.<span class="apidocCodeKeywordSpan">_handlePublish</span>(packet, done)
+    break
+  case 'puback':
+  case 'pubrec':
+  case 'pubcomp':
+  case 'suback':
+  case 'unsuback':
+    this._handleAck(packet)
+...</pre></li>
     </ul>
 
 
@@ -1469,7 +1644,23 @@ client.on('message', function (topic, message) {
     that._sendPacket({cmd: 'pubcomp', messageId: mid}, callback)
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+case 'pubcomp':
+case 'suback':
+case 'unsuback':
+  this._handleAck(packet)
+  done()
+  break
+case 'pubrel':
+  this.<span class="apidocCodeKeywordSpan">_handlePubrel</span>(packet, done)
+  break
+case 'connack':
+  this._handleConnack(packet)
+  done()
+  break
+case 'pingresp':
+  this._handlePingresp(packet)
+...</pre></li>
     </ul>
 
 
@@ -1489,7 +1680,23 @@ client.on('message', function (topic, message) {
   }
   return id
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  packet = {
+    cmd: 'publish',
+    topic: topic,
+    payload: message,
+    qos: opts.qos,
+    retain: opts.retain,
+    messageId: this.<span class="apidocCodeKeywordSpan">_nextId</span>()
+  }
+
+  switch (opts.qos) {
+    case 1:
+    case 2:
+
+// Add to callbacks
+...</pre></li>
     </ul>
 
 
@@ -1505,7 +1712,23 @@ client.on('message', function (topic, message) {
   this.emit('reconnect')
   this._setupStream()
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+ if (!that.disconnecting &amp;&amp; !that.reconnectTimer &amp;&amp; (that.options.reconnectPeriod &gt; 0)) {
+   if (!this.reconnecting) {
+     this.emit('offline')
+     this.reconnecting = true
+   }
+   that.reconnectTimer = setInterval(function () {
+     that.<span class="apidocCodeKeywordSpan">_reconnect</span>()
+   }, that.options.reconnectPeriod)
+ }
+}
+
+/**
+* _clearReconnect - clear the reconnect timer
+*/
+...</pre></li>
     </ul>
 
 
@@ -1553,7 +1776,23 @@ client.on('message', function (topic, message) {
       break
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        // Ensure that the original callback passed in to publish gets invoked
+        if (cb) {
+          cb(err, status)
+        }
+
+        storeDeliver()
+      }
+      that.<span class="apidocCodeKeywordSpan">_sendPacket</span>(packet)
+    } else if (outStore.destroy) {
+      outStore.destroy()
+    }
+  }
+  storeDeliver()
+})
+.on('error', this.emit.bind(this, 'error'))
+...</pre></li>
     </ul>
 
 
@@ -1600,7 +1839,23 @@ client.on('message', function (topic, message) {
     }, that.options.reconnectPeriod)
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        this.stream.end.bind(this.stream)
+      )
+    )
+  }
+
+  if (!this.disconnecting) {
+    this._clearReconnect()
+    this.<span class="apidocCodeKeywordSpan">_setupReconnect</span>()
+  }
+
+  if (this.pingTimer !== null) {
+    this.pingTimer.clear()
+    this.pingTimer = null
+  }
+}
+...</pre></li>
     </ul>
 
 
@@ -1671,7 +1926,23 @@ client.on('message', function (topic, message) {
     that._cleanUp(true)
   }, this.options.connectTimeout)
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ })
+
+ // Setup reconnect timer on disconnect
+ this.on('close', this._setupReconnect)
+
+ events.EventEmitter.call(this)
+
+ this.<span class="apidocCodeKeywordSpan">_setupStream</span>()
+}
+inherits(MqttClient, events.EventEmitter)
+
+/**
+* setup the event handlers in the inner stream.
+*
+* @api private
+...</pre></li>
     </ul>
 
 
@@ -1688,7 +1959,23 @@ client.on('message', function (topic, message) {
     this.pingTimer.reschedule(this.options.keepalive * 1000)
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    cb(new Error('No connection to broker'))
+  }
+
+  return
+}
+
+// When sending a packet, reschedule the ping timer
+this.<span class="apidocCodeKeywordSpan">_shiftPingInterval</span>()
+
+if (packet.cmd !== 'publish') {
+  sendPacket(this, packet, cb)
+  return
+}
+
+switch (packet.qos) {
+...</pre></li>
     </ul>
 
 
@@ -1770,7 +2057,23 @@ Hello mqtt
     <li>description and source-code<pre class="apidocCodePre">getLastMessageId = function () {
   return (this.nextId === 1) ? 65535 : (this.nextId - 1)
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  })
+
+  it('should return 65535 for last message id once the interal counter reached limit', function () {
+    var client = mqtt.connect(config)
+    client.nextId = 65535
+
+    client._nextId().should.equal(65535)
+    client.<span class="apidocCodeKeywordSpan">getLastMessageId</span>().should.equal(65535)
+    client._nextId().should.equal(1)
+    client.getLastMessageId().should.equal(1)
+    client.end()
+  })
+})
+
+describe('reconnecting', function () {
+...</pre></li>
     </ul>
 
 
@@ -1785,7 +2088,23 @@ Hello mqtt
     <li>description and source-code<pre class="apidocCodePre">handleMessage = function (packet, callback) {
   callback()
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    this._sendPacket({
+      cmd: 'puback',
+      messageId: mid
+    });
+  }
+  // emit the message event for both qos 1 and 0
+  this.emit('message', topic, message, packet);
+  this.<span class="apidocCodeKeywordSpan">handleMessage</span>(packet, done);
+  break;
+default:
+  // do nothing but every switch mus have a default
+  // log or throw an error about unknown qos
+  break;
+
+for now i just suppressed the warnings
+...</pre></li>
     </ul>
 
 
@@ -2005,7 +2324,23 @@ client.end()
 
   return this
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/**
+ * unsubscribe - unsubscribe from topic(s)
+ *
+ * @param {String, Array} topic - topics to unsubscribe from
+ * @param {Function} [callback] - callback fired on unsuback
+ * @returns {MqttClient} this - for chaining
+ * @api public
+ * @example client.<span class="apidocCodeKeywordSpan">unsubscribe</span>('topic');
+ * @example client.unsubscribe('topic', console.log);
+ */
+MqttClient.prototype.unsubscribe = function (topic, callback) {
+var packet = {
+  cmd: 'unsubscribe',
+  qos: 1,
+  messageId: this._nextId()
+...</pre></li>
     </ul>
 
 
@@ -2068,7 +2403,23 @@ data, making it usable both in Node and the Browser.
     cb()
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (typeof force === 'function') {
+  cb = force
+  force = false
+}
+
+function closeStores () {
+  that.disconnected = true
+  that.incomingStore.<span class="apidocCodeKeywordSpan">close</span>(function () {
+    that.outgoingStore.close(cb)
+  })
+}
+
+function finish () {
+  // defer closesStores of an I/O cycle,
+  // just to make sure things are
+...</pre></li>
     </ul>
 
 
@@ -2111,7 +2462,22 @@ data, making it usable both in Node and the Browser.
 
   return stream
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.on('connect', function () {
+if (this.disconnected) {
+  return
+}
+
+this.connected = true
+var outStore = null
+outStore = this.outgoingStore.<span class="apidocCodeKeywordSpan">createStream</span>()
+
+// Control of stored messages
+outStore.once('readable', function () {
+  function storeDeliver () {
+    var packet = outStore.read(1)
+    var cb
+...</pre></li>
     </ul>
 
 
@@ -2134,7 +2500,23 @@ data, making it usable both in Node and the Browser.
 
   return this
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Process
+switch (type) {
+  case 'pubcomp':
+    // same thing as puback for QoS 2
+  case 'puback':
+    // Callback - we're done
+    delete this.outgoing[mid]
+    this.outgoingStore.<span class="apidocCodeKeywordSpan">del</span>(packet, cb)
+    break
+  case 'pubrec':
+    response = {
+      cmd: 'pubrel',
+      qos: 2,
+      messageId: mid
+    }
+...</pre></li>
     </ul>
 
 
@@ -2156,7 +2538,23 @@ data, making it usable both in Node and the Browser.
 
   return this
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @api private
+ */
+
+MqttClient.prototype._handlePubrel = function (packet, callback) {
+  var mid = packet.messageId
+  var that = this
+
+  that.incomingStore.<span class="apidocCodeKeywordSpan">get</span>(packet, function (err, pub) {
+if (err) {
+  return that.emit('error', err)
+}
+
+if (pub.cmd !== 'pubrel') {
+  that.emit('message', pub.topic, pub.payload, pub)
+  that.incomingStore.put(packet)
+...</pre></li>
     </ul>
 
 
@@ -2177,7 +2575,22 @@ data, making it usable both in Node and the Browser.
 
   return this
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    client.stream.once('drain', cb)
+  } else if (cb) {
+    cb()
+  }
+}
+
+function storeAndSend (client, packet, cb) {
+  client.outgoingStore.<span class="apidocCodeKeywordSpan">put</span>(packet, function storedPacket (err) {
+    if (err) {
+      return cb &amp;&amp; cb(err)
+    }
+    sendPacket(client, packet, cb)
+  })
+}
+...</pre></li>
     </ul>
 
 
@@ -2474,7 +2887,23 @@ client.on('message', function (topic, message) {
 
   this._setupStream()
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+describe('MqttClient', function () {
+describe('creating', function () {
+  it('should allow instantiation of MqttClient without the \'new\' operator', function (done) {
+    should(function () {
+      var client
+      try {
+        client = mqtt.<span class="apidocCodeKeywordSpan">MqttClient</span>(function () {
+          throw Error('break')
+        }, {})
+        client.end()
+      } catch (err) {
+        if (err.message !== 'break') {
+          throw err
+        }
+...</pre></li>
     </ul>
 
 
@@ -2502,7 +2931,23 @@ client.on('message', function (topic, message) {
   }
   return null
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+if (typeof callback !== 'function') {
+  opts = callback
+  callback = nop
+}
+
+invalidTopic = validations.<span class="apidocCodeKeywordSpan">validateTopics</span>(obj)
+if (invalidTopic !== null) {
+  setImmediate(callback, new Error('Invalid topic ' + invalidTopic))
+  return this
+}
+
+if (this._checkDisconnecting(callback)) {
+  return this
+...</pre></li>
     </ul>
 
 

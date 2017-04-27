@@ -1,6 +1,6 @@
 # npmdoc-mqtt
 
-#### api documentation for  [mqtt (v2.6.2)](https://github.com/mqttjs/MQTT.js#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mqtt.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mqtt) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mqtt.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mqtt)
+#### basic api documentation for  [mqtt (v2.6.2)](https://github.com/mqttjs/MQTT.js#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mqtt.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mqtt) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mqtt.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mqtt)
 
 #### A library for the MQTT protocol
 
